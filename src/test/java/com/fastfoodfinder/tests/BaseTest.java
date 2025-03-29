@@ -27,6 +27,7 @@ public class BaseTest {
 
     protected final Duration TIMEOUT = Duration.ofSeconds(10);
     protected AndroidDriver driver;
+    protected WebDriverWait wait;
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
@@ -35,13 +36,14 @@ public class BaseTest {
                 .setDeviceName("emulator-5554") //TODO Move out
                 .setApp("D:\\Dev\\locator-app.apk")
                 .setAutomationName("UiAutomator2")
+                .autoGrantPermissions()
                 .disableWindowAnimation();
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
 
         driver.manage().timeouts().implicitlyWait(TIMEOUT);
 
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("android.widget.TextView")));
     }
 
@@ -58,7 +60,6 @@ public class BaseTest {
                 Files.copy(screenshot.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
                 System.out.println("Screenshot could not be captured");
-                // Handle the exception
             }
         }
     }
@@ -69,5 +70,4 @@ public class BaseTest {
             driver.quit();
         }
     }
-
 }
