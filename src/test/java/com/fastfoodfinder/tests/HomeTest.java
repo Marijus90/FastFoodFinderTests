@@ -1,6 +1,6 @@
-package com.fastfoodfinder.tests.screens;
+package com.fastfoodfinder.tests;
 
-import com.fastfoodfinder.tests.BaseTest;
+import com.fastfoodfinder.tests.screens.HomeScreen;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
