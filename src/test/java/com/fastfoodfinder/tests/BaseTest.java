@@ -33,7 +33,7 @@ public class BaseTest {
     public void setUp() throws MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName("Android")
-                .setDeviceName("emulator-5554") //TODO Move out
+                .setDeviceName("emulator-5554")
                 .setApp("D:\\Dev\\locator-app.apk")
                 .setAutomationName("UiAutomator2")
                 .autoGrantPermissions()

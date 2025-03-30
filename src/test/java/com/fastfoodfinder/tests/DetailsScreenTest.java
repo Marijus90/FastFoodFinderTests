@@ -9,6 +9,8 @@ import static org.testng.Assert.assertTrue;
 
 public class DetailsScreenTest extends BaseTest {
 
+    private static final String GOOGLE_MAPS_APP_PACKAGE_NAME = "de.pnpq.osmlocator.base.activities.AppMainActivity";
+
     @Test(description = "The Details screen loads successfully")
     public void testDetailsScreenLoadsSuccessfully() {
         HomeScreen homeScreen = new HomeScreen(driver);
@@ -34,6 +36,6 @@ public class DetailsScreenTest extends BaseTest {
         homeScreen.tapFirstPOIListItem();
 
         detailsScreen.tapNavigateTo();
-        assertTrue(AppTestUtils.isExternalAppOpened(driver, "de.pnpq.osmlocator.base.activities.AppMainActivity"));
+        assertTrue(AppTestUtils.isExternalAppOpened(driver, GOOGLE_MAPS_APP_PACKAGE_NAME));
     }
 }

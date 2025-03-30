@@ -58,33 +58,26 @@ public class DetailsScreen extends BaseScreen {
     }
 
     public boolean isToolbarDisplayedCorrectly() {
-        try {
-            return waitUntilElement(toolbar).isDisplayed()
-                    && waitUntilClickableElement(backIcon).isDisplayed()
-                    && waitUntilElement(titleText).isDisplayed()
-                    && waitUntilClickableElement(navigateHereIcon).isDisplayed()
-                    && waitUntilClickableElement(moreInfoIcon).isDisplayed()
-                    && waitUntilClickableElement(moreOptionsIcon).isDisplayed();
-        } catch (Exception exception) {
-            return false;
-        }
+        return waitUntilElement(toolbar).isDisplayed()
+                && waitUntilClickableElement(backIcon).isDisplayed()
+                && waitUntilElement(titleText).isDisplayed()
+                && waitUntilClickableElement(navigateHereIcon).isDisplayed()
+                && waitUntilClickableElement(moreInfoIcon).isDisplayed()
+                && waitUntilClickableElement(moreOptionsIcon).isDisplayed();
     }
 
     public boolean isPOIDetailsDisplayedCorrectly() {
-        try {
-            return waitUntilElement(logoImage).isDisplayed()
-                    && waitUntilElement(poiDetailsTitle).isDisplayed()
-                    && waitUntilElement(poiAddressText).isDisplayed()
-                    && waitUntilElement(poiDistanceText).isDisplayed()
-                    && waitUntilElement(poiCompass).isDisplayed()
-                    && waitUntilClickableElement(openWebsiteButton).isDisplayed()
-                    && waitUntilClickableElement(mapTab).isDisplayed()
-                    && waitUntilClickableElement(mapTabText).isDisplayed()
-                    && waitUntilClickableElement(imagesTab).isDisplayed()
-                    && waitUntilClickableElement(imagesTabText).isDisplayed();
-        } catch (Exception exception) {
-            return false;
-        }
+        return waitUntilElement(logoImage).isDisplayed()
+                && waitUntilElement(poiDetailsTitle).isDisplayed()
+                && waitUntilElement(poiAddressText).isDisplayed()
+                && waitUntilElement(poiDistanceText).isDisplayed()
+                && waitUntilElement(poiCompass).isDisplayed()
+                && waitUntilClickableElement(openWebsiteButton).isDisplayed()
+                && waitUntilClickableElement(mapTab).isDisplayed()
+                && waitUntilClickableElement(mapTabText).isDisplayed()
+                && waitUntilClickableElement(imagesTab).isDisplayed()
+                && waitUntilClickableElement(imagesTabText).isDisplayed();
+
     }
 
     public boolean isMapDisplayed() {

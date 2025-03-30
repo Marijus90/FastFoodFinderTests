@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 public class HomeScreen extends BaseScreen {
 
     private final By listItemLocator = By.xpath("//*[@resource-id='android:id/list']/*");
+
     // Toolbar
     @AndroidFindBy(id = "de.pnpq.fflocator:id/toolbar")
     private WebElement toolbar;
@@ -17,6 +18,7 @@ public class HomeScreen extends BaseScreen {
     private WebElement titleText;
     @AndroidFindBy(accessibility = "More options")
     private WebElement moreOptionsIcon;
+
     // List tabs
     @AndroidFindBy(accessibility = "List")
     private WebElement listTab;
@@ -26,9 +28,11 @@ public class HomeScreen extends BaseScreen {
     private WebElement mapTab;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Map\"]")
     private WebElement mapTabText;
+
     // List and its items
     @AndroidFindBy(id = "android:id/list")
     private WebElement locationsList;
+
     // Bottom banner
     @AndroidFindBy(id = "de.pnpq.fflocator:id/adViewFlipper")
     private WebElement bottomBanner;
@@ -40,43 +44,28 @@ public class HomeScreen extends BaseScreen {
     }
 
     public boolean isToolbarDisplayedCorrectly() {
-        try {
-            return waitUntilElement(toolbar).isDisplayed()
-                    && waitUntilClickableElement(burgerMenu).isDisplayed()
-                    && waitUntilElement(titleText).isDisplayed()
-                    && waitUntilClickableElement(moreOptionsIcon).isDisplayed();
-        } catch (Exception exception) {
-            return false;
-        }
+        return waitUntilElement(toolbar).isDisplayed()
+                && waitUntilClickableElement(burgerMenu).isDisplayed()
+                && waitUntilElement(titleText).isDisplayed()
+                && waitUntilClickableElement(moreOptionsIcon).isDisplayed();
     }
 
     public boolean listTabsAreDisplayed() {
-        try {
-            return waitUntilClickableElement(listTab).isDisplayed()
-                    && waitUntilElement(listTabText).isDisplayed()
-                    && waitUntilClickableElement(mapTab).isDisplayed()
-                    && waitUntilElement(mapTabText).isDisplayed();
-        } catch (Exception exception) {
-            return false;
-        }
+        return waitUntilClickableElement(listTab).isDisplayed()
+                && waitUntilElement(listTabText).isDisplayed()
+                && waitUntilClickableElement(mapTab).isDisplayed()
+                && waitUntilElement(mapTabText).isDisplayed();
     }
 
     public boolean isListPopulated() {
-        try {
-            waitUntilElement(locationsList).isDisplayed();
-            return !driver.findElements(listItemLocator).isEmpty();
-        } catch (Exception exception) {
-            return false;
-        }
+        waitUntilElement(locationsList).isDisplayed();
+        return !driver.findElements(listItemLocator).isEmpty();
     }
 
     public boolean isBottomBannerDisplayed() {
-        try {
-            return waitUntilClickableElement(bottomBanner).isDisplayed()
-                    && waitUntilClickableElement(bottomBannerText).isDisplayed();
-        } catch (Exception exception) {
-            return false;
-        }
+        return waitUntilClickableElement(bottomBanner).isDisplayed()
+                && waitUntilClickableElement(bottomBannerText).isDisplayed();
+
     }
 
     public void tapFirstPOIListItem() {
