@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class HomeScreen extends BaseScreen {
 
+    private final By listItemLocator = By.xpath("//*[@resource-id='android:id/list']/*");
     // Toolbar
     @AndroidFindBy(id = "de.pnpq.fflocator:id/toolbar")
     private WebElement toolbar;
@@ -16,7 +17,6 @@ public class HomeScreen extends BaseScreen {
     private WebElement titleText;
     @AndroidFindBy(accessibility = "More options")
     private WebElement moreOptionsIcon;
-
     // List tabs
     @AndroidFindBy(accessibility = "List")
     private WebElement listTab;
@@ -26,12 +26,9 @@ public class HomeScreen extends BaseScreen {
     private WebElement mapTab;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Map\"]")
     private WebElement mapTabText;
-
     // List and its items
     @AndroidFindBy(id = "android:id/list")
     private WebElement locationsList;
-    private final By listItemLocator = By.xpath("//*[@resource-id='android:id/list']/*");
-
     // Bottom banner
     @AndroidFindBy(id = "de.pnpq.fflocator:id/adViewFlipper")
     private WebElement bottomBanner;
@@ -66,10 +63,7 @@ public class HomeScreen extends BaseScreen {
 
     public boolean isListPopulated() {
         try {
-            // Wait for the list to be visible
             waitUntilElement(locationsList).isDisplayed();
-
-            // Check if the list has at least one child element (list item)
             return !driver.findElements(listItemLocator).isEmpty();
         } catch (Exception exception) {
             return false;
@@ -82,6 +76,15 @@ public class HomeScreen extends BaseScreen {
                     && waitUntilClickableElement(bottomBannerText).isDisplayed();
         } catch (Exception exception) {
             return false;
+        }
+    }
+
+    public void tapFirstPOIListItem() {
+        try {
+            waitUntilElement(locationsList).isDisplayed();
+            driver.findElements(listItemLocator).get(0).click();
+        } catch (Exception exception) {
+            // An exception is thrown due to a race condition withing the Appium framework
         }
     }
 }

@@ -18,16 +18,16 @@ public class HomeMapScreen extends BaseScreen {
         super(driver);
     }
 
-    public void isMapDisplayed() {
-        waitUntilElement(mapLayout).isDisplayed();
+    public boolean isMapDisplayed() {
+        return waitUntilElement(mapLayout).isDisplayed();
     }
 
-    public void isMapMarkersDisplayed() {
-        waitUntilElement(customMapMarker).isDisplayed();
+    public boolean isMapMarkersDisplayed() {
+        return waitUntilElement(customMapMarker).isDisplayed();
     }
 
-    public void isCustomMapMarkerInfoDisplayed() {
-        waitUntilClickableElement(stageLeftCafeTitleText).isDisplayed();
+    public boolean isCustomMapMarkerInfoDisplayed() {
+        return waitUntilClickableElement(stageLeftCafeTitleText).isDisplayed();
     }
 
     public void tapCustomMapMarkerInfo() {
@@ -42,3 +42,4 @@ public class HomeMapScreen extends BaseScreen {
         waitUntilClickableElement(customMapMarker).click();
     }
 }
+

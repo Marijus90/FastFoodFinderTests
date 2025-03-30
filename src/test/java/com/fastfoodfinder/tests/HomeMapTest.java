@@ -4,6 +4,8 @@ import com.fastfoodfinder.tests.screens.DetailsScreen;
 import com.fastfoodfinder.tests.screens.HomeMapScreen;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertTrue;
+
 public class HomeMapTest extends BaseTest {
     // TODO - Mention this in the project description
     // Optional checks: Verify that user can interact with the map
@@ -17,8 +19,8 @@ public class HomeMapTest extends BaseTest {
         mapScreen.dismissPrivacyDialogueIfPresent();
 
         mapScreen.tapMapTab();
-        mapScreen.isMapDisplayed();
-        mapScreen.isMapMarkersDisplayed();
+        assertTrue(mapScreen.isMapDisplayed());
+        assertTrue(mapScreen.isMapMarkersDisplayed());
     }
 
     @Test(priority = 1, description = "Tapping on a location marker opens the details screen")
@@ -29,9 +31,9 @@ public class HomeMapTest extends BaseTest {
 
         mapScreen.tapMapTab();
         mapScreen.tapCustomMapMarker();
-        mapScreen.isCustomMapMarkerInfoDisplayed();
+        assertTrue(mapScreen.isCustomMapMarkerInfoDisplayed());
         mapScreen.tapCustomMapMarkerInfo();
 
-        detailsScreen.isTitleDisplayed();
+        assertTrue(detailsScreen.isTitleDisplayed());
     }
 }

@@ -7,7 +7,7 @@ import static org.testng.Assert.assertTrue;
 
 public class HomeTest extends BaseTest {
 
-    @Test(description = "The Home Screen loads successfully")
+    @Test(description = "The Home screen loads successfully")
     public void testHomeScreenLoadsSuccessfully() {
         HomeScreen homeScreen = new HomeScreen(driver);
         homeScreen.dismissPrivacyDialogueIfPresent();
