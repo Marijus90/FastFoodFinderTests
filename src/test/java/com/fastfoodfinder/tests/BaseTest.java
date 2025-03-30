@@ -1,5 +1,8 @@
 package com.fastfoodfinder.tests;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.By;
@@ -7,9 +10,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,8 +27,18 @@ import java.util.Date;
 public class BaseTest {
 
     protected final Duration TIMEOUT = Duration.ofSeconds(10);
+
+    protected static ExtentReports extent;
+    protected ExtentTest test;
     protected AndroidDriver driver;
     protected WebDriverWait wait;
+
+    @BeforeSuite
+    public void setupExtentReports() {
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("test-output/ExtentReport.html");
+        extent = new ExtentReports();
+        extent.attachReporter(sparkReporter);
+    }
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
@@ -47,6 +58,11 @@ public class BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("android.widget.TextView")));
     }
 
+    @BeforeMethod
+    public void startTest(ITestResult result) {
+        test = extent.createTest(result.getMethod().getMethodName());
+    }
+
     @AfterMethod
     public void captureScreenshotOnTestFailure(ITestResult testResult) {
         if (testResult.getStatus() == ITestResult.FAILURE) {
@@ -64,10 +80,20 @@ public class BaseTest {
         }
     }
 
+    @AfterMethod
+    public void tearDownTest() {
+        extent.flush();
+    }
+
     @AfterClass
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    @AfterSuite
+    public void closeExtent() {
+        extent.flush();
     }
 }

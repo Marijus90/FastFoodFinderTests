@@ -11,8 +11,9 @@ public class DetailsScreenTest extends BaseTest {
 
     private static final String GOOGLE_MAPS_APP_PACKAGE_NAME = "de.pnpq.osmlocator.base.activities.AppMainActivity";
 
-    @Test(description = "The Details screen loads successfully")
+    @Test
     public void testDetailsScreenLoadsSuccessfully() {
+        test.info("Starting test: The Details screen loads successfully");
         HomeScreen homeScreen = new HomeScreen(driver);
         DetailsScreen detailsScreen = new DetailsScreen(driver);
         homeScreen.dismissPrivacyDialogueIfPresent();
@@ -25,10 +26,12 @@ public class DetailsScreenTest extends BaseTest {
         assertTrue(detailsScreen.isMapMarkerDisplayed());
 
         assertTrue(homeScreen.isBottomBannerDisplayed());
+        test.pass("Finished test: The Details screen loaded successfully");
     }
 
-    @Test(priority = 1, description = "Tapping Navigate icon starts the correct navigation intent")
+    @Test(priority = 1)
     public void testNavigateIconStartsNavigationIntent() {
+        test.info("Starting test: Tapping Navigate icon starts the correct navigation intent");
         HomeScreen homeScreen = new HomeScreen(driver);
         DetailsScreen detailsScreen = new DetailsScreen(driver);
         homeScreen.dismissPrivacyDialogueIfPresent();
@@ -37,5 +40,6 @@ public class DetailsScreenTest extends BaseTest {
 
         detailsScreen.tapNavigateTo();
         assertTrue(AppTestUtils.isExternalAppOpened(driver, GOOGLE_MAPS_APP_PACKAGE_NAME));
+        test.pass("Finished test: Tapping the Navigate icon stared a Google Maps navigation intent");
     }
 }
