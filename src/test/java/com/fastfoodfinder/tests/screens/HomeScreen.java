@@ -50,7 +50,7 @@ public class HomeScreen extends BaseScreen {
                 && waitUntilClickableElement(moreOptionsIcon).isDisplayed();
     }
 
-    public boolean listTabsAreDisplayed() {
+    public boolean isListTabsDisplayed() {
         return waitUntilClickableElement(listTab).isDisplayed()
                 && waitUntilElement(listTabText).isDisplayed()
                 && waitUntilClickableElement(mapTab).isDisplayed()

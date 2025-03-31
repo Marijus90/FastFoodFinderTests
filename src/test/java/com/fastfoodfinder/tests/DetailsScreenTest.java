@@ -21,7 +21,8 @@ public class DetailsScreenTest extends BaseTest {
         homeScreen.tapFirstPOIListItem();
 
         assertTrue(detailsScreen.isToolbarDisplayedCorrectly());
-        assertTrue(detailsScreen.isPOIDetailsDisplayedCorrectly());
+        assertTrue(detailsScreen.isPOIDetailsTopSectionDisplayedCorrectly());
+        assertTrue(detailsScreen.isPOIDetailsMapSectionDisplayedCorrectly());
         assertTrue(detailsScreen.isMapDisplayed());
         assertTrue(detailsScreen.isMapMarkerDisplayed());
 

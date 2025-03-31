@@ -66,18 +66,20 @@ public class DetailsScreen extends BaseScreen {
                 && waitUntilClickableElement(moreOptionsIcon).isDisplayed();
     }
 
-    public boolean isPOIDetailsDisplayedCorrectly() {
+    public boolean isPOIDetailsTopSectionDisplayedCorrectly() {
         return waitUntilElement(logoImage).isDisplayed()
                 && waitUntilElement(poiDetailsTitle).isDisplayed()
                 && waitUntilElement(poiAddressText).isDisplayed()
                 && waitUntilElement(poiDistanceText).isDisplayed()
                 && waitUntilElement(poiCompass).isDisplayed()
-                && waitUntilClickableElement(openWebsiteButton).isDisplayed()
-                && waitUntilClickableElement(mapTab).isDisplayed()
+                && waitUntilClickableElement(openWebsiteButton).isDisplayed();
+    }
+
+    public boolean isPOIDetailsMapSectionDisplayedCorrectly() {
+        return  waitUntilClickableElement(mapTab).isDisplayed()
                 && waitUntilClickableElement(mapTabText).isDisplayed()
                 && waitUntilClickableElement(imagesTab).isDisplayed()
                 && waitUntilClickableElement(imagesTabText).isDisplayed();
-
     }
 
     public boolean isMapDisplayed() {

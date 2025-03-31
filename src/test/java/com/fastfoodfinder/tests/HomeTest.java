@@ -14,7 +14,7 @@ public class HomeTest extends BaseTest {
         homeScreen.dismissPrivacyDialogueIfPresent();
 
         assertTrue(homeScreen.isToolbarDisplayedCorrectly());
-        assertTrue(homeScreen.listTabsAreDisplayed());
+        assertTrue(homeScreen.isListTabsDisplayed());
 
         assertTrue(homeScreen.isListPopulated());
 
