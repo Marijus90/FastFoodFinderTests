@@ -78,7 +78,7 @@ This project requires Java and Appium to be installed prior to run, otherwise yo
 
 ## Known Issues And Limitations
 
-- **Element Selection Issue:** One test case fails due to Appium selecting an incorrect element, despite using the correct identifier. This may be an internal Appium issue related to element recognition.
+- **Element Selection Issue:** One test case fails due to Appium selecting an incorrect element, despite using the correct identifier. This is an actual bug that the framework has detected and it has been confirmed to be present when performing a manual test.
 - **Race Condition in Details Screen Test:** The test for the details screen throws an exception due to a race condition when tapping on an element in a list. If the exception is caught, the test completes successfully. This is likely an internal issue within Appium's handling of element interactions.
 - **Project Improvements:** There are opportunities for further optimization and tidying of the project, such as moving the driver setup into a dedicated configuration file to enhance maintainability and modularity, etc.
 - **Extent Reports Visual Clutter:** I've observed that Extent Reports adds some visual clutter to the test case reports. To minimize repetition, I have removed test descriptions from the top of the test methods.
@@ -99,10 +99,11 @@ The automated tests have detected an actual bug in the app, and it was verified 
 **Priority**: Major (defined by the PO)  
 **Severity**: Minor
 **Frequency**: Always
-**Environment**: Develop 
-- Android Version: 14
+**Environment**: Production
+**Detected by**: Automation tests
+- Mobile OS, Version: Android 14
 - Device: Google Pixel 9 Pro 
-- App Build version: v1.0
+- App build version: v1.0
 
 ## Description
 In the Map tab, on the Home screen, when a clustered marker is tapped, a wrong marker is focused on.
