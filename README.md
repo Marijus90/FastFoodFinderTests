@@ -91,7 +91,7 @@ This project requires Java and Appium to be installed prior to run, otherwise yo
 
 The automated tests have detected an actual bug in the app, and it was verified to be present by a manual test as well.
 
-## Bug Report: [APP-0001] [Android] Tapping a clustered custom map marker in a cluster selects a wrong POI
+## Bug Report: [APP-0001] [Android] Tapping a clustered custom map marker selects a wrong POI
 
 **Project**: FastFoodFinder App
 **Epic**: Initial release
@@ -105,7 +105,7 @@ The automated tests have detected an actual bug in the app, and it was verified 
 - App Build version: v1.0
 
 ## Description
-In the Map tab, on the Home screen, whenever any clustered marker is tapped, a wrong marker is focused on.
+In the Map tab, on the Home screen, when a clustered marker is tapped, a wrong marker is focused on.
 
 ---
 ## Preconditions
@@ -114,7 +114,7 @@ There should be a cluster of markers on the map.
 ## Steps to Reproduce
 1. Navigate to the Map tab on the Home page.
 2. Keep the map in a default zoomed-out state.
-3. Tap precisely on a marker in a cluster.
+3. Tap precisely on some markers in a cluster.
    
 ---
 
@@ -124,7 +124,7 @@ The specific marker that was tapped on should be focused on.
 ---
 
 ## Actual Result
-The most far-out marker in a clusted is focused on.
+Usually, the most far-out marker in a clusted is focused on.
 
 ---
 
